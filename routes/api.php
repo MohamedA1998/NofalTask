@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\CountriesController;
+use App\Http\Controllers\Api\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ Route::controller(ResetPasswordController::class)->group(function(){
     Route::post('reset-password', 'resetPassword');
 });
 
+Route::apiResource('profile', ProfileController::class)
+    ->only('index', 'store')
+    ->middleware('auth:api');
 
 Route::apiResource('countries', CountriesController::class)->only('index', 'show');
 

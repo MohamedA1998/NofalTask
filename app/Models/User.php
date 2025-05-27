@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
@@ -72,9 +74,27 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function getImageAttribute()
+    {
+        if (!$this->attributes['image']) {
+            return '';
+        }
+
+        if (Str::startsWith($this->attributes['image'], ['http://', 'https://'])) {
+            return $this->attributes['image'];
+        }
+
+        return Storage::url($this->attributes['image']);
+    }
+
 
     public function otp()
     {
         return $this->hasMany(OTP::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }

@@ -24,6 +24,19 @@ return new class extends Migration
             $table->integer('age')->nullable()->unsigned();
             $table->enum('gender', User::$GENDER)->nullable();
             $table->string('password');
+
+            // Followers
+            $table->string('image')->nullable();
+            $table->integer('height')->unsigned()->nullable();
+            $table->integer('weight')->unsigned()->nullable();
+            $table->string('job_title')->nullable();
+            $table->boolean('blood_pressure')->nullable();
+            $table->boolean('diabetes')->nullable();
+            $table->boolean('cholesterol')->nullable();
+            $table->string('genetic_disease')->nullable();
+            $table->boolean('heart_defects')->nullable();
+            $table->boolean('smoking')->nullable();
+
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
