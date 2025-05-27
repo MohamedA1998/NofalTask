@@ -29,9 +29,4 @@ class Country extends Model
     {
         return $query->where("status", true);
     }
-    
-    // public function cityes()
-    // {
-    //     $this->hasMany(City::class);
-    // }
 }
