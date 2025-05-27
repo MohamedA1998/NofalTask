@@ -48,6 +48,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public static array $TYPE = ['doctor', 'follower'];
+    public static array $GENDER = ['male', 'female'];
 
     // Rest omitted for brevity
 
@@ -69,5 +70,11 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+
+    public function otp()
+    {
+        return $this->hasMany(OTP::class);
     }
 }
