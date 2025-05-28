@@ -13,7 +13,13 @@
 					"name": "show",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{URL}}/countries/1",
 							"host": [
@@ -34,7 +40,13 @@
 							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{URL}}/countries",
 							"host": [
@@ -74,7 +86,13 @@
 									"type": "noauth"
 								},
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"full_name\" : \"Ahmed\",\n    \"phone\" : \"01001001011\",\n    \"country_id\" : 1 ,\n    \"email\" : \"test4@example.com\",\n    \"age\" : 25,\n    \"gender\" :  \"male\", //'male', 'female'\n    \"type\" : \"follower\", // 'doctor', 'follower'\n    \"password\" : \"password\",\n    \"password_confirmation\" : \"password\"\n}",
@@ -115,7 +133,13 @@
 									"type": "noauth"
 								},
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"otp\" : 815347\n}",
@@ -162,7 +186,13 @@
 									"type": "noauth"
 								},
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"email\" : \"test4@example.com\",\n    \"password\" : \"password\"\n}",
@@ -188,7 +218,13 @@
 							"name": "logout",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "{{URL}}/logout",
 									"host": [
@@ -225,7 +261,13 @@
 									"type": "noauth"
 								},
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"email\" : \"test4@example.com\"\n}",
@@ -266,7 +308,13 @@
 									"type": "noauth"
 								},
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"otp\" : 235377,\n    \"password\" : \"password\",\n    \"password_confirmation\" : \"password\"\n}",
@@ -299,7 +347,13 @@
 					"name": "user",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{URL}}/profile",
 							"host": [
@@ -316,7 +370,13 @@
 					"name": "update",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
