@@ -74,17 +74,9 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function getImageAttribute()
+    public function follower()
     {
-        if (!$this->attributes['image']) {
-            return '';
-        }
-
-        if (Str::startsWith($this->attributes['image'], ['http://', 'https://'])) {
-            return $this->attributes['image'];
-        }
-
-        return Storage::url($this->attributes['image']);
+        return $this->hasOne(Follower::class);
     }
 
 

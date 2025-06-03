@@ -12,9 +12,9 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $user = auth('api')->user()->toResource();
+        $user = auth('api')->user()->load('follower');
 
-        return $this->apiResponse($user);
+        return $this->apiResponse(new UserResource($user));
     }
 
 
@@ -47,9 +47,9 @@ class ProfileController extends Controller
             $data['image'] = $imagePath;
         }
 
-        $user->update($data);
+        $user->follower()->update($data);
 
-        return $this->apiResponse($user->toResource());
+        return $this->apiResponse(new UserResource($user->load('follower')));
     }
     
 

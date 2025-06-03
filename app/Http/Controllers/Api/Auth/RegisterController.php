@@ -29,6 +29,8 @@ class RegisterController extends Controller
 
         $user = User::create($validator->validated());
 
+        $request->type !== 'follower' ?: $user->follower()->create();
+
         $code = rand(100000, 999999);
 
         $otp = $user->otp()->create([
