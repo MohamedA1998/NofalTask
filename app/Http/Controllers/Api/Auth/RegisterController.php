@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\Enum\Gender;
+use App\Enum\Type;
 use App\Http\Controllers\Controller;
 use App\Models\OTP;
 use App\Models\User;
@@ -18,9 +20,9 @@ class RegisterController extends Controller
             'country_id'    => 'required|exists:countries,id',
             'email'         => 'required|email|unique:users,email',
             'age'           => 'required|integer|min:15|max:80',
-            'gender'        => 'required|in:' . implode(',', User::$GENDER),
+            'gender'        => 'required|in:' . implode(',', Gender::values()),
             'password'      => 'required|string|min:8|confirmed',
-            'type'          => 'required|in:' . implode(',', User::$TYPE),
+            'type'          => 'required|in:' . implode(',', Type::values()),
         ]);
         
         if ($validator->fails()) {

@@ -49,11 +49,6 @@ class User extends Authenticatable implements JWTSubject
         ];
     }
 
-    public static array $TYPE = ['doctor', 'follower'];
-    public static array $GENDER = ['male', 'female'];
-
-    // Rest omitted for brevity
-
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *

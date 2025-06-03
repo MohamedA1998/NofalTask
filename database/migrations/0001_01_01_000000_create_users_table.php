@@ -1,5 +1,7 @@
 <?php
 
+use App\Enum\Gender;
+use App\Enum\Type;
 use App\Models\Country;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -20,9 +22,9 @@ return new class extends Migration
             $table->foreignIdFor(Country::class)->nullable();
             $table->string('phone')->unique()->nullable();
             $table->boolean('phone_verified')->default(false);
-            $table->enum('type', User::$TYPE)->nullable();
+            $table->enum('type', Type::values())->nullable();
             $table->integer('age')->nullable()->unsigned();
-            $table->enum('gender', User::$GENDER)->nullable();
+            $table->enum('gender', Gender::values())->nullable();
             $table->string('password');
 
             $table->timestamp('email_verified_at')->nullable();
