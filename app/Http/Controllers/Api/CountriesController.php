@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CountryResource;
 use App\Models\Country;
 
 class CountriesController extends Controller
@@ -12,7 +13,9 @@ class CountriesController extends Controller
      */
     public function index()
     {
-        return Country::active()->get()->toResourceCollection();
+        $countries = Country::active()->get();
+
+        return CountryResource::collection($countries);
     }
 
     /**
@@ -20,6 +23,6 @@ class CountriesController extends Controller
      */
     public function show(Country $country)
     {
-        return $country->toResource();
+        return new CountryResource($country);
     }
 }
