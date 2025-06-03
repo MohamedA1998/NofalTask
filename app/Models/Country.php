@@ -13,7 +13,7 @@ class Country extends Model
 {
     use HasFactory;
 
-    public static function translationsWithCountry($id = null)
+    public static function withTranslation($id = null)
     {
         $locale = config('app.locale', 'en');
 

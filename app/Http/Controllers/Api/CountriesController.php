@@ -13,7 +13,7 @@ class CountriesController extends Controller
      */
     public function index()
     {
-       $countries = Country::translationsWithCountry();
+       $countries = Country::withTranslation();
 
         return CountryResource::collection($countries);
     }
@@ -23,7 +23,7 @@ class CountriesController extends Controller
      */
     public function show(Country $country)
     {
-        $country = $country->translationsWithCountry($country->id)->first();
+        $country = $country->withTranslation($country->id)->first();
 
         return new CountryResource($country);
     }
