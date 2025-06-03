@@ -19,8 +19,6 @@ class CountryFactory extends Factory
         $name = fake()->country;
         
         return [
-            'name_ar' => $name,
-            'name_en' => $name,
             'code' => '+' . rand(111, 999),
             'flag' => fake()->imageUrl()
         ];
