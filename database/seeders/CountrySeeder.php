@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Country;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CountrySeeder extends Seeder
 {
@@ -13,13 +14,31 @@ class CountrySeeder extends Seeder
      */
     public function run(): void
     {
-        Country::factory()->create([
-            'name_ar' => 'مصر',
-            'name_en' => 'Egypt',
+        $egypt = Country::factory()->create([
             'main' => 1,
             'code' => '+20',
         ]);
 
-        Country::factory()->count(25)->create();
+        foreach (['ar', 'en'] as $lang) {
+            DB::table('country_translations')->insert([
+                'country_id' => $egypt->id,
+                'language' => $lang,
+                'name' => $lang === 'ar' ? 'مصر' : 'Egypt',
+            ]);
+        }
+        
+
+        Country::factory()->count(25)->create()->each(function ($country) {
+            $countryName = fake()->country();
+
+            foreach (['ar', 'en'] as $lang) {
+                DB::table('country_translations')->insert([
+                    'country_id' => $country->id,
+                    'language' => $lang,
+                    'name' => $countryName,
+                ]);
+            }
+        });
+
     }
 }
