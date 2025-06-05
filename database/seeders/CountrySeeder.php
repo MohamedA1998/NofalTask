@@ -20,7 +20,7 @@ class CountrySeeder extends Seeder
         ]);
 
         foreach (['ar', 'en'] as $lang) {
-            DB::table('country_translations')->insert([
+            DB::table('countries_translations')->insert([
                 'country_id' => $egypt->id,
                 'language' => $lang,
                 'name' => $lang === 'ar' ? 'مصر' : 'Egypt',
@@ -32,7 +32,7 @@ class CountrySeeder extends Seeder
             $countryName = fake()->country();
 
             foreach (['ar', 'en'] as $lang) {
-                DB::table('country_translations')->insert([
+                DB::table('countries_translations')->insert([
                     'country_id' => $country->id,
                     'language' => $lang,
                     'name' => $countryName,

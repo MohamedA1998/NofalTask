@@ -2,32 +2,18 @@
 
 namespace App\Models;
 
+use App\Traits\TranslationTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Country extends Model
 {
-    use HasFactory;
+    use HasFactory, TranslationTrait;
 
-    public static function withTranslation($id = null)
-    {
-        $locale = config('app.locale', 'en');
-
-        return DB::table('countries')
-            ->when($id, function ($query) use ($id) {
-                $query->where('countries.id', $id);
-            })
-            ->leftJoin('country_translations', function ($join) use ($locale) {
-                $join->on('countries.id', '=', 'country_translations.country_id')
-                    ->where('country_translations.language', '=', $locale);
-            })
-            ->select('countries.*', 'country_translations.name AS name')
-            ->get();
-    }
+    protected $appends = ['name'];
 
     public function getFlagAttribute()
     {

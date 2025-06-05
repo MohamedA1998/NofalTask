@@ -13,7 +13,7 @@ class CountriesController extends Controller
      */
     public function index()
     {
-       $countries = Country::withTranslation();
+       $countries = Country::withTranslation()->get();
 
         return CountryResource::collection($countries);
     }
