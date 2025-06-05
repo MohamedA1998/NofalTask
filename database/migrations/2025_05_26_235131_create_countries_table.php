@@ -20,7 +20,7 @@ return new class extends Migration
 			$table->timestamps();
         });
 
-        Schema::create('country_translations', function (Blueprint $table) {
+        Schema::create('countries_translations', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('country_id');
             $table->string('language'); 
@@ -35,7 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('country_translations');
+        Schema::dropIfExists('countries_translations');
         Schema::dropIfExists('countries');
     }
 };
